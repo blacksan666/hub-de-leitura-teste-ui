@@ -1,6 +1,6 @@
 
 describe('Funcionaliadade: Contato', () => {
-   //este sera o primeiro teste
+  //este sera o primeiro teste
   beforeEach(() => {
     cy.visit('index.html')
   });
@@ -13,8 +13,8 @@ describe('Funcionaliadade: Contato', () => {
     cy.get('#btn-submit').click()
     //deve exibir mensagem de sucesso
     cy.contains('Contato enviado com sucesso!').should('exist')
-    });
-    
+  });
+
   it('Deve validar mensagem de erro ao enviar sem preencher nome', () => {
     cy.get('[name="name"]').clear()
     cy.get('[name="email"]').type('willian.sieben@outlook.com')
@@ -54,4 +54,5 @@ describe('Funcionaliadade: Contato', () => {
     //deve exibir mensagem de erro para o campo mensagem
     cy.get('#alert-container').should('contain', 'Por favor, escreva sua Mensagem.')
   });
+  
 });

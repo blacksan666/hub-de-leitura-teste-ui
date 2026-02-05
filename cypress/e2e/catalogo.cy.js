@@ -6,7 +6,7 @@ describe('Funcionalidade: Catalogo de livros', () => {
         cy.visit('catalog.html')
     });
 
-    it.skip('Deve clicar no botão adicionar a cesta', () => {
+    it('Deve clicar no botão adicionar a cesta', () => {
         cy.get(':nth-child(1) > .card > .card-body > .mt-auto > .d-grid > .btn-primary').click()
         cy.get('#cart-count').should('contain', '1')
     });
@@ -30,12 +30,12 @@ describe('Funcionalidade: Catalogo de livros', () => {
         cy.get('#global-alert-container').should('contain', 'A Menina que Roubava Livros')
     });
 
-it('Deve clicar no nome do livro e redirecionar para a página do livro', () => {
-    cy. contains('A Metamorfose').click()
-    cy.url().should('contain', 'book-details')
-    cy.get('#add-to-cart-btn').click()
-    cy.get('#alert-container').should('contain', 'Livro adicionado à cesta com sucesso!')
+    it('Deve clicar no nome do livro e redirecionar para a página do livro', () => {
+        cy.contains('A Metamorfose').click()
+        cy.url().should('contain', 'book-details')
+        cy.get('#add-to-cart-btn').click()
+        cy.get('#alert-container').should('contain', 'Livro adicionado à cesta com sucesso!')
 
-});
+    });
 
 });
