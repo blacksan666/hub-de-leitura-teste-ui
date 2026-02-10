@@ -4,7 +4,8 @@
   "description": "Primeiro teste de UI",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run --browser chrome",
+    "cy:record": "cypress run --browser chrome --record --key 3222b7e5-f92c-4ff4-8038-17f1352c1fed"
   },
   "repository": {
     "type": "git",

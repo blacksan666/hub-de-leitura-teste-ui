@@ -1,10 +1,11 @@
 /// <reference types="cypress"/>
 import { faker } from '@faker-js/faker';
+import cadastroPage from '../support/pages/cadastro-page';
 
 describe('Funcionalidade: Cadastro de hub de leitura', () => {
 
     beforeEach(() => {
-        cy.visit('register.html')
+        cadastroPage.visitarPaginaCadastro()
     });
 
     it('Deve preencher o formulário de cadastro com sucesso', () => {
@@ -23,7 +24,7 @@ describe('Funcionalidade: Cadastro de hub de leitura', () => {
         cy.get('#user-name').should('contain', name)
     });
 
-    it('Deve preencher o formulário de cadastro usando comando customizado', () => {
+    it('Deve preencher o formulário de cadastro usando faker', () => {
         let name = faker.person.fullName()
         let email = faker.internet.email()
         let phone = faker.phone.number()
@@ -37,4 +38,39 @@ describe('Funcionalidade: Cadastro de hub de leitura', () => {
         cy.url().should('include', 'dashboard')
     });
 
-});
+    it('Deve fazer cadastro usando page object', () => {
+        cadastroPage.preecherCadastro(
+            'Willian Sieben',
+            'willian.sieben@outlook.com',
+            '1234567890',
+            'SenhaSegura123!',
+            'SenhaSegura123!')
+        cy.url().should('include', 'dashboard')
+    });
+
+    it('Deve fazer cadastro usando page object + faker', () => {
+        let name = faker.person.fullName()
+        let email = faker.internet.email()
+        let phone = faker.phone.number()
+        cadastroPage.preecherCadastro(
+            name,
+            email,
+            phone,
+            'SenhaSegura123!',
+            'SenhaSegura123!')
+        cy.url().should('include', 'dashboard')
+    });
+
+    it.only('Deve validar mensagem de erro ao não preencher campo nome', () => {
+        let email = faker.internet.email()
+        cadastroPage.preecherCadastro(
+            '',
+            email,
+            '1234567890',
+            'SenhaSegura123!',
+            'SenhaSegura123!')
+        cy.get(':nth-child(1) > .invalid-feedback').should('contain', 'Nome deve ter pelo menos 2 caracteres')
+
+    });
+
+}); 
