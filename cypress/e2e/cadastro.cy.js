@@ -1,6 +1,12 @@
 /// <reference types="cypress"/>
+//toda vez que coloco. no cypress, ele me mostra as opções de comandos do cypress, como get, click, type, etc.
+
 import { faker } from '@faker-js/faker';
+//para importar o faker, é necessário instalar a biblioteca faker-js/faker usando o comando npm install @faker-js/faker --save-dev
+//faker é uma biblioteca para gerar dados falsos, como nomes, emails, telefones, etc.
+
 import cadastroPage from '../support/pages/cadastro-page';
+//para importar o cadastroPage, é necessário criar o arquivo cadastro-page.js dentro da pasta support/pages, e exportar a classe CadastroPage
 
 describe('Funcionalidade: Cadastro de hub de leitura', () => {
 

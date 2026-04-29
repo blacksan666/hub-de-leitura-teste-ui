@@ -1,4 +1,5 @@
 /// <reference types="cypress"/>
+//toda vez que coloco. no cypress, ele me mostra as opções de comandos do cypress, como get, click, type, etc.
 
 import livros from '../fixtures/livros.json'
 
